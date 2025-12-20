@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpx33j7pjxwka"]
+
+[ext_resource type="Script" uid="uid://cclcnpj1gj8my" path="res://entities/units/peasant/peasant.gd" id="1_nt47t"]
+[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="2_hii6q"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_jc5ts"]
+[ext_resource type="PackedScene" uid="uid://bhoeovfy24htm" path="res://components/selection/visuals/unit_selection_visual.tscn" id="4_e1dms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hii6q"]
+size = Vector2(4, 6)
+
+[node name="Peasant" type="CharacterBody2D" node_paths=PackedStringArray("selectable", "navigation")]
+script = ExtResource("1_nt47t")
+unit_name = "Peasant"
+selectable = NodePath("Selectable")
+navigation = NodePath("NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_hii6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_hii6q")
+region_enabled = true
+region_rect = Rect2(0, 8, 8, 8)
+
+[node name="Selectable" parent="." instance=ExtResource("3_jc5ts")]
+
+[node name="UnitSelectionVisual" parent="." instance=ExtResource("4_e1dms")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 5.0

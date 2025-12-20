@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://buk3nhx1hl737"]
+
+[ext_resource type="Script" uid="uid://bmx81p2ioo5fc" path="res://entities/units/raindeer/raindeer.gd" id="1_fsl4s"]
+[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="2_0e3ww"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_48mib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e3ww"]
+size = Vector2(4, 6)
+
+[node name="Raindeer" type="CharacterBody2D" node_paths=PackedStringArray("selectable", "navigation")]
+script = ExtResource("1_fsl4s")
+selectable = NodePath("Selectable")
+navigation = NodePath("NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = ExtResource("2_0e3ww")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_0e3ww")
+
+[node name="Selectable" parent="." instance=ExtResource("3_48mib")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 5.0

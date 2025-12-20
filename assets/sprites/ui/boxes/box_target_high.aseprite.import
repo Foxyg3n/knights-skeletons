@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://tbcme3xwqwi7"
+path="res://.godot/imported/box_target_high.aseprite-6e2c9b3ae03f7af703bcf9c5fcdebb5b.res"
+
+[deps]
+
+source_file="res://assets/sprites/ui/boxes/box_target_high.aseprite"
+dest_files=["res://.godot/imported/box_target_high.aseprite-6e2c9b3ae03f7af703bcf9c5fcdebb5b.res"]
+
+[params]
+

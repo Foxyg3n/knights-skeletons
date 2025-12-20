@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cx7nuyihbkdk7"
+path="res://.godot/imported/unit_preselector.aseprite-ba05a42f64f8658bd0088dccab6dd49b.res"
+
+[deps]
+
+source_file="res://components/selection/visuals/unit_preselector.aseprite"
+dest_files=["res://.godot/imported/unit_preselector.aseprite-ba05a42f64f8658bd0088dccab6dd49b.res"]
+
+[params]
+

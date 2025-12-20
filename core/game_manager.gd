@@ -1,0 +1,54 @@
+extends Node
+
+enum Scene { MainMenu, Game }
+
+@onready var game_node: Node = get_tree().get_root().get_node("Main")
+#@onready var fader: Fader = game_node.find_child("Fader")
+var current_scene: Node
+var is_changing_scene: bool = false
+
+signal load_scene_finished
+
+var debug_actions: Dictionary = {
+	KEY_ESCAPE: func(): load_scene(Scene.MainMenu),
+	KEY_1: func(): (ActionHud.instance.panel as BuildingActionPanel).set_building_name("Testowa nazwa budynku, siema")
+}
+
+func _ready():
+	# TODO: Set mouse confined mode when in-game but not when menu is open
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+
+	load_scene.call_deferred(Scene.MainMenu)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		for key in debug_actions.keys():
+			if event.pressed and event.keycode == key:
+				debug_actions[key].call()
+
+#func get_player() -> Player:
+#	return current_scene.get_node("Player")
+
+func load_scene(scene_type: Scene, force: bool = false) -> void:
+	var is_same_scene: bool = current_scene != null and current_scene.name == Scene.keys()[scene_type]
+	if not force and (is_same_scene or is_changing_scene):
+		return
+
+	is_changing_scene = true
+	
+	# Unload scene
+	if current_scene != null:
+#		await fader.fade_in()
+		game_node.remove_child(current_scene)
+		current_scene.queue_free()
+		
+	# Load scene
+	var scene_name: String = StringUtils.pascal_to_snake(Scene.keys()[scene_type])
+	var scene: PackedScene = load("res://core/scenes/" + scene_name + ".tscn")
+	var scene_instance: Node = scene.instantiate()
+	current_scene = scene_instance
+	game_node.add_child(scene_instance)
+	get_tree().paused = false
+#	await fader.fade_out()
+	is_changing_scene = false
+	load_scene_finished.emit()

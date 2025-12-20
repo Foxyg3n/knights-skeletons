@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=4 uid="uid://bhoeovfy24htm"]
+
+[ext_resource type="Script" uid="uid://1n4qvluo6opb" path="res://components/selection/visuals/unit_selection_visual.gd" id="1_22kqj"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_c3pg6"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAABSAAAAUklGRkoAAABXRUJQVlA4TD0AAAAvB8ABEB8gECDE2tZiQyBA+E/wpoVAgFDpXgsBQZH/owXgv6IGBY0kNd+fDlaaECQiFhER/U/4HuVAQ86dAA==")
+size_override = Vector2(8, 8)
+
+[node name="UnitSelectionVisual" type="Node2D"]
+script = ExtResource("1_22kqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -2)
+texture = SubResource("PortableCompressedTexture2D_c3pg6")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://components/selection/visuals/unit_selector.aseprite",
+"source_uid": 3966805023273310804
+}
+metadata/_aseprite_wizard_source_file_hash_ = "edfabe4d3486a254691a3b4f802615ee"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bicc4dv4ru5tp"
+path="res://.godot/imported/hud.aseprite-639965382ca33879abbac49a95bf5e92.res"
+
+[deps]
+
+source_file="res://assets/sprites/ui/hud.aseprite"
+dest_files=["res://.godot/imported/hud.aseprite-639965382ca33879abbac49a95bf5e92.res"]
+
+[params]
+

@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=4 uid="uid://cbphrleqypmcp"]
+
+[ext_resource type="Script" uid="uid://c5ina5n4udg5h" path="res://ui/hud/action_hud.gd" id="1_ho6tf"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nqxv5"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAEAALQAAACKAAAAUklGRoIAAABXRUJQVlA4THUAAAAvP8EsEC+gqG0jNlcE4+49gZ1aAAjYXAxprDOIFLRtw4bafR53/gMAsl9LLpXE/4FRJEmKZh2wgXWwBwJQAPo3VL+Djuj/BJj8L//L//K//P8r1vM4mj3gFhh/XzfsdjuYZVhhl4HmTAG2jTC25wo7FZP/HkMA")
+size_override = Vector2(320, 180)
+
+[node name="ActionPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ho6tf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = SubResource("PortableCompressedTexture2D_nqxv5")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/sprites/ui/hud.aseprite",
+"source_uid": 2952233601666364189
+}
+metadata/_aseprite_wizard_source_file_hash_ = "034020e3d2111537ea2878b22d8f9842"

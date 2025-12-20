@@ -1,0 +1,56 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Knights&Skeletons"
+run/main_scene="uid://dyrht1nwlwc6k"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://core/globals.gd"
+GameManager="*res://core/game_manager.gd"
+SelectionManager="*res://systems/selection/selection_manager.gd"
+InputMode="*res://systems/input/input_mode.gd"
+CommandDispatcher="*res://systems/command/command_dispatcher.gd"
+
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/mode=2
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "pink",
+"res://components/": "yellow",
+"res://core/": "red",
+"res://entities/": "purple",
+"res://systems/": "orange",
+"res://ui/": "blue",
+"res://utils/": "teal"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://fqepuiep5pmb"
+path="res://.godot/imported/box_target_close.aseprite-2c8ea2203e33628cd051f561bac8afe8.res"
+
+[deps]
+
+source_file="res://assets/sprites/ui/boxes/box_target_close.aseprite"
+dest_files=["res://.godot/imported/box_target_close.aseprite-2c8ea2203e33628cd051f561bac8afe8.res"]
+
+[params]
+
