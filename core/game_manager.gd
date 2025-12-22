@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 enum Scene { MainMenu, Game }
 
@@ -9,11 +9,6 @@ var is_changing_scene: bool = false
 
 signal load_scene_finished
 
-var debug_actions: Dictionary = {
-	KEY_ESCAPE: func(): load_scene(Scene.MainMenu),
-	KEY_1: func(): (ActionHud.instance.panel as BuildingActionPanel).set_building_name("Testowa nazwa budynku, siema")
-}
-
 func _ready():
 	# TODO: Set mouse confined mode when in-game but not when menu is open
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -22,12 +17,19 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		for key in debug_actions.keys():
-			if event.pressed and event.keycode == key:
-				debug_actions[key].call()
+		if event.pressed and event.keycode == KEY_1:
+			load_scene(Scene.MainMenu)
 
-#func get_player() -> Player:
-#	return current_scene.get_node("Player")
+		elif event.pressed and event.keycode == KEY_2:
+			var tile_map: TileMapLayer  = get_tree().get_root().find_child("Ground", true, false)
+			var tile_pos: Vector2i = tile_map.local_to_map(get_global_mouse_position())
+			Debug.get_or_add_label("mouse_tile_position").text = str(tile_pos)
+
+		elif event.pressed and event.keycode == KEY_3:
+			Map.instance.try_place_building_world(Globals.BuildingType.KEEP, get_global_mouse_position())
+
+		elif event.pressed and event.keycode == KEY_4:
+			InputMode.enter_build_mode(Globals.BuildingType.KEEP)
 
 func load_scene(scene_type: Scene, force: bool = false) -> void:
 	var is_same_scene: bool = current_scene != null and current_scene.name == Scene.keys()[scene_type]

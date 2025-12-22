@@ -1,30 +1,18 @@
-[gd_scene load_steps=6 format=4 uid="uid://ckp3lcbvungtd"]
+[gd_scene load_steps=3 format=4 uid="uid://boix3obysxyd5"]
 
-[ext_resource type="Script" uid="uid://dt4lvloyt3go5" path="res://entities/buildings/keep/keep.gd" id="1_6lbld"]
-[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="1_kwrws"]
-[ext_resource type="PackedScene" uid="uid://c1ujmtmnumfys" path="res://components/selection/visuals/building_selection_visual.tscn" id="2_6lbld"]
+[ext_resource type="Script" uid="uid://dbjh7lp5oke15" path="res://systems/ghost_building/ghost_building.gd" id="1_ucogw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwrws"]
-size = Vector2(40, 40)
-
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_f1lb1"]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ucogw"]
 _data = PackedByteArray("AAADAAUAAAABAAAAKAAAACgAAABoAQAAUklGRmABAABXRUJQVlA4TFMBAAAvJ8AJEF+gOJKk5BR7uvMn//jIQ1EjScoY2B/TkX8tp0lx27aRX1nhTnr/u/9YHaAQEBT5P1oAAIADHQiI6+Fms4jhX5P4/+6meu8CHG172zbipBWcXHiL1BPUPZq8pld3X0EZe/LDk0dIk3vB6VTtMWNE/xW2bdtIGd39w9vJpq20yqm0rE86doNSx04NNQJnKy1bXB8H85Qbp2OnxfXx9cKQLmLdxFpc3zyqIYaABcV1BgwJM8rlyNB6KMJSss7rYQa2mNJ8r9ktvtf85qje8kqlUd37X0G6dhmD1IzxUA01gm0E85SbHLZVsTmuF4Z04WylZdWNNftg/KiGANGxU403qmOnDBgSFt3ECmFkH3AEQwCDBfdh+AMWAGIIEQC8hRdf4R8ACBtC3p/L03vkNSTMwiI/VwnCIojENN8L5eqkUGp+83hvz6bu7RU/aPveLnoA")
 size_override = Vector2(40, 40)
 
-[node name="Keep" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
-script = ExtResource("1_6lbld")
-building_name = "Keep"
-footprint_size = Vector2i(5, 5)
-selectable = NodePath("Selectable")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_kwrws")
+[node name="GhostBuilding" type="Node2D"]
+script = ExtResource("1_ucogw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(20, 20)
-texture = SubResource("PortableCompressedTexture2D_f1lb1")
+texture = SubResource("PortableCompressedTexture2D_ucogw")
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -47,7 +35,3 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 7560650406817207340
 }
 metadata/_aseprite_wizard_source_file_hash_ = "0058ec27d2a7f4c3a56cd6cf6c6f65c3"
-
-[node name="Selectable" parent="." instance=ExtResource("1_kwrws")]
-
-[node name="BuildingSelectionVisual" parent="." instance=ExtResource("2_6lbld")]

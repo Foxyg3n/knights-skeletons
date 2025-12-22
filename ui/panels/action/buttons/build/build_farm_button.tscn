@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4frolvgc7x40"]
+
+[ext_resource type="Texture2D" uid="uid://di4t1qtjk46d5" path="res://assets/sprites/ui/boxes/box_target_close.png" id="1_8ufa4"]
+[ext_resource type="PackedScene" uid="uid://c3dh3wwlijrpe" path="res://ui/panels/action/buttons/action_button.tscn" id="1_ymg77"]
+[ext_resource type="Script" uid="uid://2v2hsd61wq82" path="res://ui/panels/action/buttons/build/build_button.gd" id="2_ymg77"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3wg10"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_nejrl"]
+events = [SubResource("InputEventKey_3wg10")]
+
+[node name="BuildFarmButton" instance=ExtResource("1_ymg77")]
+shortcut = SubResource("Shortcut_nejrl")
+texture_normal = ExtResource("1_8ufa4")
+script = ExtResource("2_ymg77")
+building_type = 1

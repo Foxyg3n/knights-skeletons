@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ckruwh8y51lby" path="res://ui/panels/action/action_panel_base.tscn" id="1_bbpx6"]
 [ext_resource type="Script" uid="uid://dwtii5akdylms" path="res://ui/panels/action/building_action_panel.gd" id="2_nsgbl"]
 
-[node name="BuildingHUD" node_paths=PackedStringArray("label_name") instance=ExtResource("1_bbpx6")]
+[node name="BuildingHUD" node_paths=PackedStringArray("building_name_label") instance=ExtResource("1_bbpx6")]
 script = ExtResource("2_nsgbl")
-label_name = NodePath("HUD/Label")
+building_name_label = NodePath("HUD/Label")
 
 [node name="Label" type="Label" parent="HUD" index="0"]
 layout_mode = 0

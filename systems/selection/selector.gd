@@ -13,7 +13,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	# End selecting
 	elif selection_start != Vector2.ZERO and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		selection_start = Vector2.ZERO
-		SelectionManager.set_selection(preselected_selectables_cache)
+		var preselected_units: Array = preselected_selectables_cache.filter(func(selectable: Selectable): return selectable.get_parent() is Unit)
+		var preselected_buildings: Array = preselected_selectables_cache.filter(func(selectable: Selectable): return selectable.get_parent() is Building)
+		if not preselected_units.is_empty():
+			SelectionManager.set_selection(preselected_units)
+		elif not preselected_buildings.is_empty():
+			SelectionManager.set_selection(preselected_buildings)
+		else:
+			SelectionManager.set_selection([])
+
 		_clear_preselected_selectables()
 	# Selecting
 	elif selection_start != Vector2.ZERO and event is InputEventMouseMotion:
@@ -42,25 +50,17 @@ func _update_collision_box():
 	rect_collision.size = size
 
 func _preselect_units():
-	var units_in_scene: Array = get_tree().get_nodes_in_group("unit")
-	var buildings_in_scene: Array = get_tree().get_nodes_in_group("building")
-	var area_units: Array = area.get_overlapping_bodies().filter(func(body): return body in units_in_scene)
-	var area_buildings: Array = area.get_overlapping_bodies().filter(func(body): return body in buildings_in_scene)
+	var area_selectables: Array = area.get_overlapping_bodies().filter(func(body): return body.selectable).map(func(body): return body.selectable)
 
-	# FIXME: area_buildings != preselected_selectables_cache
-	for building in ArrayUtils.difference(area_buildings, preselected_selectables_cache):
-		building.selectable.preselect()
-		preselected_selectables_cache.append(building.selectable)
+	# New selectables
+	for selectable in ArrayUtils.difference(area_selectables, preselected_selectables_cache):
+		selectable.preselect()
+		preselected_selectables_cache.append(selectable)
 
-	# New units
-#	for unit in ArrayUtils.difference(area_units, preselected_units_cache):
-#		unit.selectable.preselect()
-#		preselected_units_cache.append(unit)
-
-	# Removed units
-#	for unit in ArrayUtils.difference(preselected_units_cache, area_units):
-#		unit.selectable.predeselect()
-#		preselected_units_cache.erase(unit)
+	# Old selectables
+	for selectable in ArrayUtils.difference(preselected_selectables_cache, area_selectables):
+		selectable.predeselect()
+		preselected_selectables_cache.erase(selectable)
 
 func _clear_preselected_selectables():
 	for selectable in preselected_selectables_cache:

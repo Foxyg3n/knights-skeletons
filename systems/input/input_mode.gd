@@ -1,29 +1,60 @@
 extends Node
 
-var current_mode: String = "None"
-var mode_data: Dictionary = {}
+enum Mode {
+	NORMAL,
+	BUILD
+}
 
-# FIXME: Why is this even a thing?
-signal command_ready(command: Command)
+var current_mode: Mode = Mode.NORMAL
 
-func set_mode(mode: String, data: Dictionary = {}):
-	current_mode = mode
-	mode_data = data
-	print("Entered mode:", mode)
+# Building Mode
+var building_type: Globals.BuildingType = Globals.BuildingType.NONE
+var ghost_building: GhostBuilding
+
+func enter_build_mode(type: Globals.BuildingType) -> void:
+	if type == Globals.BuildingType.NONE:
+		return
+		
+	building_type = type
+	current_mode = Mode.BUILD
+
+	ghost_building = load("res://systems/ghost_building/ghost_building.tscn").instantiate()
+	ghost_building.buildling_type = building_type
+	Map.instance.add_child(ghost_building)
 
 func clear_mode():
-	current_mode = "None"
-	mode_data.clear()
-	print("Exited input mode")
+	# Building Mode
+	building_type = Globals.BuildingType.NONE
+	if ghost_building:
+		ghost_building.queue_free()
+		ghost_building = null
 
-# TODO: Should selecting single unit be here (InputMode left-click) or in selection system (Selector left-click)
-func handle_left_click(world_position: Vector2):
-	pass
+	current_mode = Mode.NORMAL
 
-func handle_right_click(world_position: Vector2):
+func handle_left_click(world_pos: Vector2):
 	match current_mode:
-		_:
-			_handle_default_right_click(world_position)
+		Mode.NORMAL:
+			pass
+		Mode.BUILD:
+			_handle_build_click(world_pos)
+
+func handle_right_click(world_pos: Vector2):
+	match current_mode:
+		Mode.NORMAL:
+			_handle_default_right_click(world_pos)
+		Mode.BUILD:
+			pass
+
+func handle_world_motion(world_pos: Vector2) -> void:
+	if current_mode != Mode.BUILD:
+		return
+
+	var tile: Vector2i = Map.instance.world_to_tile(world_pos)
+#	var tile_world_pos: Vector2 = Map.instance.tile_to_world(tile)
+	ghost_building.center = tile
+
+	var can_place: bool = Map.instance.can_place(building_type, tile, true)
+	ghost_building.set_valid(can_place)
 
 func _handle_default_right_click(world_position: Vector2) -> void:
 	var selected_units: Array[Unit] = SelectionManager.get_selection_as_units()
@@ -35,10 +66,15 @@ func _handle_default_right_click(world_position: Vector2) -> void:
 #    var clicked_unit = World.get_unit_at_position(world_position)
 	if false: #clicked_unit and clicked_unit.is_enemy():
 		pass
-        # Attack command
+		# Attack command
 #        var cmd = AttackCommand.new(selected_units, clicked_unit.global_position)
 	else:
-        # Move command
+		# Move command
 		command = MoveCommand.new(selected_units, world_position)
 
-	command_ready.emit(command)
+	CommandDispatcher.enqueue_command(command)
+
+func _handle_build_click(mouse_pos: Vector2):
+	var building: Building = Map.instance.try_place_building_world(building_type, mouse_pos)
+	if building:
+		clear_mode()

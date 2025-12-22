@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://da7loiwrjv4g1" path="res://components/selection/selectable.gd" id="1_45vxp"]
 
-[node name="Selectable" type="Node2D"]
+[node name="Selectable" type="Node2D" groups=["selectable"]]
 script = ExtResource("1_45vxp")

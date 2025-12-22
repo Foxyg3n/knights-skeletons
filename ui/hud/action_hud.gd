@@ -28,6 +28,10 @@ func handle_selection_change() -> void:
 		else:
 			pass
 
+	# Building selection
+	elif selection.any(func(selectable: Selectable): return selectable.get_parent() is Building):
+		change_action_panel(Globals.ActionPanelType.BUILDING, selection)
+
 func change_action_panel(panel_type: Globals.ActionPanelType, selection: Array):
 	# Unload action panel
 	if panel != null:
@@ -36,20 +40,21 @@ func change_action_panel(panel_type: Globals.ActionPanelType, selection: Array):
 		panel = null
 
 	# Load new action panel
-	var new_panel: ActionPanelBase = load(Globals.ActionPanelScenes[panel_type]).instantiate() as ActionPanelBase
+	var new_panel: ActionPanelBase = load(Globals.ActionPanelScenes.get(panel_type)).instantiate() as ActionPanelBase
 	add_child(new_panel)
 	new_panel.set_hud_selection(selection.map(func(selectable: Selectable): return selectable.get_parent()))
 	new_panel.update_info()
 	panel = new_panel
-	for button in panel.get_action_buttons():
-		button.action_requested.connect(_on_action_button_pressed)
+	# TODO: Needs a little refactoring
+#	for button in panel.get_action_buttons():
+#		button.action_requested.connect(_on_action_button_pressed)
 
-func _on_action_button_pressed(action_id: String, action_data: Dictionary):
-	if action_id in [ "HighHpTargeting" ]:
-		# execute command
-		# Test
-		var command: Command = TargetHighHpCommand.new(SelectionManager.get_selection_as_units())
-		CommandDispatcher.enqueue_command(command)
-	else:
-#		InputMode.set_mode(action_id, action_data)
-		pass
+#func _on_action_button_pressed(action_id: String, action_data: Dictionary):
+#	if action_id in [ "HighHpTargeting" ]:
+#		# execute command
+#		# Test
+#		var command: Command = TargetHighHpCommand.new(SelectionManager.get_selection_as_units())
+#		CommandDispatcher.enqueue_command(command)
+#	else:
+##		InputMode.set_mode(action_id, action_data)
+#		pass
