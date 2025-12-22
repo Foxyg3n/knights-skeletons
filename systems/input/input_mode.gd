@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 enum Mode {
 	NORMAL,
@@ -18,9 +18,15 @@ func enter_build_mode(type: Globals.BuildingType) -> void:
 	building_type = type
 	current_mode = Mode.BUILD
 
-	ghost_building = load("res://systems/ghost_building/ghost_building.tscn").instantiate()
-	ghost_building.buildling_type = building_type
-	Map.instance.add_child(ghost_building)
+	if ghost_building:
+		ghost_building.buildling_type = building_type
+	else:
+		ghost_building = load("res://systems/ghost_building/ghost_building.tscn").instantiate()
+		ghost_building.buildling_type = building_type
+		var tile: Vector2i = Map.instance.world_to_tile(get_global_mouse_position())
+		ghost_building.center = tile
+		Map.instance.add_child(ghost_building)
+
 
 func clear_mode():
 	# Building Mode

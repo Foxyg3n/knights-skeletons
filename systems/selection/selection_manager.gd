@@ -4,6 +4,12 @@ var selected_objects: Array[Selectable] = []
 
 signal on_selection_change
 
+func has_selection() -> bool:
+	return not selected_objects.is_empty()
+
+func get_selection() -> Array[Selectable]:
+	return selected_objects.duplicate()
+
 func get_selection_as_units() -> Array[Unit]:
 	var selected_units: Array[Unit]
 	selected_units.assign(selected_objects.map(func(selectable: Selectable): return selectable.get_parent()))

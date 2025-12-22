@@ -11,3 +11,5 @@ func _unhandled_input(event: InputEvent) -> void:
                 InputMode.handle_right_click(world_pos)
         elif event is InputEventMouseMotion:
             InputMode.handle_world_motion(world_pos)
+    elif event is InputEventKey:
+        ControlGroupSystem.handle_input(event as InputEventKey)

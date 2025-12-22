@@ -9,6 +9,9 @@ func _get_footprint_size() -> Vector2i:
 	var building: Building = building_scene.instantiate()
 	return building.footprint_size
 
+func _ready() -> void:
+	set_valid(true)
+
 var top_left: Vector2i :
 	get:
 		return Map.instance.world_to_tile(global_position)

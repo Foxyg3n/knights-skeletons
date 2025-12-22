@@ -23,6 +23,7 @@ SelectionManager="*res://systems/selection/selection_manager.gd"
 InputMode="*res://systems/input/input_mode.gd"
 CommandDispatcher="*res://systems/command/command_dispatcher.gd"
 Debug="*res://systems/debug/debug.tscn"
+ControlGroupSystem="*res://systems/control_group/control_group_system.gd"
 
 [display]
 
