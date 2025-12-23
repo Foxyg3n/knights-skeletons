@@ -27,10 +27,10 @@ func _input(event: InputEvent) -> void:
 #			Debug.get_or_add_label("mouse_tile_position").text = str(tile_pos)
 #
 #		elif event.pressed and event.keycode == KEY_3:
-#			Map.instance.try_place_building_world(Globals.BuildingType.KEEP, get_global_mouse_position())
+#			Map.instance.try_place_building_world(Types.BuildingType.KEEP, get_global_mouse_position())
 #
 #		elif event.pressed and event.keycode == KEY_4:
-#			InputMode.enter_build_mode(Globals.BuildingType.KEEP)
+#			InputMode.enter_build_mode(Types.BuildingType.KEEP)
 
 func load_scene(scene_type: Scene, force: bool = false) -> void:
 	var is_same_scene: bool = current_scene != null and current_scene.name == Scene.keys()[scene_type]

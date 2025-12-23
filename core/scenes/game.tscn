@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://dkmj50kp2moo5"]
+[gd_scene load_steps=19 format=4 uid="uid://dkmj50kp2moo5"]
 
-[ext_resource type="Script" uid="uid://drmlkq3xbqq18" path="res://core/game.gd" id="1_3eyib"]
+[ext_resource type="Script" uid="uid://drmlkq3xbqq18" path="res://world/game.gd" id="1_3eyib"]
 [ext_resource type="Script" uid="uid://0np5t5fgb30d" path="res://systems/input/world_input.gd" id="1_g4kob"]
 [ext_resource type="Texture2D" uid="uid://xenybl5cp8k2" path="res://assets/sprites/building_tileset.png" id="1_ibkli"]
 [ext_resource type="PackedScene" uid="uid://cbphrleqypmcp" path="res://ui/hud/action_hud.tscn" id="1_s0nni"]
 [ext_resource type="Texture2D" uid="uid://u8ht0ueeq46k" path="res://assets/sprites/ground_tileset.png" id="2_cpr0p"]
-[ext_resource type="Script" uid="uid://bf56n534hv8vp" path="res://core/game_camera.gd" id="2_qbsmt"]
+[ext_resource type="Script" uid="uid://bf56n534hv8vp" path="res://world/game_camera.gd" id="2_qbsmt"]
 [ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="3_78awf"]
-[ext_resource type="Script" uid="uid://ya5mgj06u6mq" path="res://core/map.gd" id="4_3eyib"]
+[ext_resource type="Script" uid="uid://ya5mgj06u6mq" path="res://world/map.gd" id="4_3eyib"]
+[ext_resource type="PackedScene" uid="uid://dsuo4g3bb2e1e" path="res://ui/hud/pause_menu.tscn" id="5_wddnx"]
 [ext_resource type="PackedScene" uid="uid://buk3nhx1hl737" path="res://entities/units/raindeer/raindeer.tscn" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://bpx33j7pjxwka" path="res://entities/units/peasant/peasant.tscn" id="8_400sg"]
 [ext_resource type="Script" uid="uid://dp6bivxqijvwd" path="res://systems/selection/selector.gd" id="9_g4kob"]
@@ -59,7 +60,7 @@ script = ExtResource("1_g4kob")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GameHudUI" parent="UI" instance=ExtResource("1_s0nni")]
+[node name="ActionHud" parent="UI" instance=ExtResource("1_s0nni")]
 
 [node name="Selector" type="Node2D" parent="UI"]
 script = ExtResource("9_g4kob")
@@ -68,6 +69,9 @@ script = ExtResource("9_g4kob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Selector/Area2D"]
 shape = SubResource("RectangleShape2D_g4kob")
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("5_wddnx")]
+visible = false
 
 [node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("ground_layer")]
 script = ExtResource("4_3eyib")

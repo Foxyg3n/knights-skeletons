@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://ckp3lcbvungtd"]
+[gd_scene load_steps=7 format=4 uid="uid://ckp3lcbvungtd"]
 
 [ext_resource type="Script" uid="uid://dt4lvloyt3go5" path="res://entities/buildings/keep/keep.gd" id="1_6lbld"]
 [ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="1_kwrws"]
 [ext_resource type="PackedScene" uid="uid://c1ujmtmnumfys" path="res://components/selection/visuals/building_selection_visual.tscn" id="2_6lbld"]
+[ext_resource type="Resource" uid="uid://qlxyt5c3xyyt" path="res://data/buildings/keep.tres" id="2_me7y7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwrws"]
 size = Vector2(40, 40)
@@ -13,8 +14,7 @@ size_override = Vector2(40, 40)
 
 [node name="Keep" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
 script = ExtResource("1_6lbld")
-building_name = "Keep"
-footprint_size = Vector2i(5, 5)
+data = ExtResource("2_me7y7")
 selectable = NodePath("Selectable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

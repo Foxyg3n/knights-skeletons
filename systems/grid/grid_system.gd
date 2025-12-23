@@ -15,12 +15,10 @@ func tile_to_world(tile: Vector2i) -> Vector2:
 	world.y -= tile_map.tile_set.tile_size.y / 2
 	return world
 
-func can_place(building_type: Globals.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> bool:
-	# TODO: Change to get only building data, not the whole scene
-	var building_scene_path: String = Globals.BuildingScenes.get(building_type)
-	var building: Building = load(building_scene_path).instantiate() as Building
+func can_place(building_type: Types.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> bool:
+	var building_data: BuildingData = Paths.get_building_data(building_type)
 
-	var tiles: Array[Vector2i] = _get_footprint_tiles(building.footprint_size, tile, is_tile_center)
+	var tiles: Array[Vector2i] = _get_footprint_tiles(building_data.footprint_size, tile, is_tile_center)
 	return not tiles.any(is_tile_reserved)
 
 func is_tile_reserved(tile: Vector2i) -> bool:

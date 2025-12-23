@@ -15,4 +15,4 @@ func update_info():
 	var building: Building = buildings.front()
 
 	set_action_buttons(building.actions)
-	set_building_name(building.get_building_name())
+	set_building_name(building.building_name)

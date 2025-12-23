@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://ckruwh8y51lby"]
 
-[ext_resource type="Script" uid="uid://dcacyri0m3fvs" path="res://ui/panels/action/action_panel_base.gd" id="1_jywam"]
+[ext_resource type="Script" uid="uid://dcacyri0m3fvs" path="res://ui/panels/action/base_action_panel.gd" id="1_jywam"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jywam"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAEAALQAAACKAAAAUklGRoIAAABXRUJQVlA4THUAAAAvP8EsEC+gqG0jNlcE4+49gZ1aAAjYXAxprDOIFLRtw4bafR53/gMAsl9LLpXE/4FRJEmKZh2wgXWwBwJQAPo3VL+Djuj/BJj8L//L//K//P8r1vM4mj3gFhh/XzfsdjuYZVhhl4HmTAG2jTC25wo7FZP/HkMA")

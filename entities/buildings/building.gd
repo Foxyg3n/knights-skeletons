@@ -1,7 +1,9 @@
 class_name Building extends StaticBody2D
 
-@export var building_name: String
-@export var footprint_size: Vector2i
+@export var data: BuildingData
+
+var building_name: String
+var footprint_size: Vector2i
 
 @export var selectable: Selectable
 
@@ -22,7 +24,7 @@ var center: Vector2i :
 func _ready() -> void:
 	add_to_group("building")
 
-	# add actions like destroy building
+	building_name = data.building_name
+	footprint_size = data.footprint_size
 
-func get_building_name() -> String:
-	return building_name
+	# add actions like destroy building

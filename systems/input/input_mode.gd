@@ -8,11 +8,11 @@ enum Mode {
 var current_mode: Mode = Mode.NORMAL
 
 # Building Mode
-var building_type: Globals.BuildingType = Globals.BuildingType.NONE
+var building_type: Types.BuildingType = Types.BuildingType.NONE
 var ghost_building: GhostBuilding
 
-func enter_build_mode(type: Globals.BuildingType) -> void:
-	if type == Globals.BuildingType.NONE:
+func enter_build_mode(type: Types.BuildingType) -> void:
+	if type == Types.BuildingType.NONE:
 		return
 		
 	building_type = type
@@ -30,7 +30,7 @@ func enter_build_mode(type: Globals.BuildingType) -> void:
 
 func clear_mode():
 	# Building Mode
-	building_type = Globals.BuildingType.NONE
+	building_type = Types.BuildingType.NONE
 	if ghost_building:
 		ghost_building.queue_free()
 		ghost_building = null
@@ -49,7 +49,7 @@ func handle_right_click(world_pos: Vector2):
 		Mode.NORMAL:
 			_handle_default_right_click(world_pos)
 		Mode.BUILD:
-			pass
+			clear_mode()
 
 func handle_world_motion(world_pos: Vector2) -> void:
 	if current_mode != Mode.BUILD:
@@ -61,6 +61,16 @@ func handle_world_motion(world_pos: Vector2) -> void:
 
 	var can_place: bool = Map.instance.can_place(building_type, tile, true)
 	ghost_building.set_valid(can_place)
+
+func handle_key_press(event: InputEventKey):
+	if event.pressed and not event.echo:
+		match current_mode:
+			Mode.NORMAL:
+				if event.is_action_pressed("ui_cancel"):
+					PauseMenu.instance.show_menu()
+			Mode.BUILD:
+				if event.is_action_pressed("ui_cancel"):
+					clear_mode()
 
 func _handle_default_right_click(world_position: Vector2) -> void:
 	var selected_units: Array[Unit] = SelectionManager.get_selection_as_units()

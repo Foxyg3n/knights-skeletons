@@ -6,7 +6,7 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAQAEAALQAAACKAAAAUklGRoIAAABXRUJQVlA4THUAAAAvP8EsEC+gqG0jNlcE4+49gZ1aAAjYXAxprDOIFLRtw4bafR53/gMAsl9LLpXE/4FRJEmKZh2wgXWwBwJQAPo3VL+Djuj/BJj8L//L//K//P8r1vM4mj3gFhh/XzfsdjuYZVhhl4HmTAG2jTC25wo7FZP/HkMA")
 size_override = Vector2(320, 180)
 
-[node name="ActionPanel" type="Control"]
+[node name="ActionHud" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -14,4 +14,4 @@ func set_unit_name(unit_name: String):
 func update_info():
 	var unit: Unit = units.front()
 
-	set_unit_name(unit.get_unit_name())
+	set_unit_name(unit.unit_name)

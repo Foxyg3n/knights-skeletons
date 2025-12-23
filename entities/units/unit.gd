@@ -38,8 +38,5 @@ func calculate_separation() -> Vector2:
 			force += (global_position - other.global_position).normalized() * (24 - distance)
 	return force * 0.5  # tuning factor
 
-func get_unit_name() -> String:
-	return unit_name
-
 func move_to(target: Vector2):
 	navigation.target_position = target

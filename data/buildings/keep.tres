@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://qlxyt5c3xyyt"]
+
+[ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_p2ufg"]
+
+[resource]
+script = ExtResource("1_p2ufg")
+building_name = "Keep"
+footprint_size = Vector2i(5, 5)
+building_type = 1
+metadata/_custom_type_script = "uid://dks14ga6irdht"

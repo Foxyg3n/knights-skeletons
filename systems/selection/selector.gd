@@ -40,6 +40,9 @@ func _draw() -> void:
 	draw_rect(select_box, Color("#ffffff33"))
 	draw_rect(select_box, Color("#ffffff"), false, 0.2)
 
+func _exit_tree() -> void:
+	preselected_selectables_cache.clear()
+
 func _update_collision_box():
 	var size: Vector2 = abs(get_global_mouse_position() - selection_start)
 

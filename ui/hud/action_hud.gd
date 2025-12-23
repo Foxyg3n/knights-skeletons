@@ -9,13 +9,13 @@ func _ready() -> void:
 	instance = self
 	SelectionManager.on_selection_change.connect(handle_selection_change)
 	# TODO: Change to capitol Hud when it's done
-	change_action_panel(Globals.ActionPanelType.BASE, [])
+	change_action_panel(Types.ActionPanelType.BASE, [])
 
 func handle_selection_change() -> void:
 	var selection: Array[Selectable] = SelectionManager.selected_objects
 
 	if selection.is_empty():
-		change_action_panel(Globals.ActionPanelType.BASE, [])
+		change_action_panel(Types.ActionPanelType.BASE, [])
 		return
 
 	# Unit selection
@@ -23,16 +23,16 @@ func handle_selection_change() -> void:
 		# Same type units:
 		# TODO: Check actual type instead of unit name
 		if ArrayUtils.trait_matches(selection, func(selectable: Selectable): selectable.get_parent().unit_name):
-			change_action_panel(Globals.ActionPanelType.UNIT, selection)
+			change_action_panel(Types.ActionPanelType.UNIT, selection)
 		# Different type units:
 		else:
 			pass
 
 	# Building selection
 	elif selection.any(func(selectable: Selectable): return selectable.get_parent() is Building):
-		change_action_panel(Globals.ActionPanelType.BUILDING, selection)
+		change_action_panel(Types.ActionPanelType.BUILDING, selection)
 
-func change_action_panel(panel_type: Globals.ActionPanelType, selection: Array):
+func change_action_panel(panel_type: Types.ActionPanelType, selection: Array):
 	# Unload action panel
 	if panel != null:
 		remove_child(panel)
@@ -40,7 +40,8 @@ func change_action_panel(panel_type: Globals.ActionPanelType, selection: Array):
 		panel = null
 
 	# Load new action panel
-	var new_panel: ActionPanelBase = load(Globals.ActionPanelScenes.get(panel_type)).instantiate() as ActionPanelBase
+	var new_panel_scene: PackedScene = Paths.get_action_panel_scene(panel_type)
+	var new_panel: ActionPanelBase = new_panel_scene.instantiate() as ActionPanelBase
 	add_child(new_panel)
 	new_panel.set_hud_selection(selection.map(func(selectable: Selectable): return selectable.get_parent()))
 	new_panel.update_info()

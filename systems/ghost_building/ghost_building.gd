@@ -1,16 +1,12 @@
 class_name GhostBuilding extends Node2D
 
-# setter -> set building data and sprite
-var buildling_type: Globals.BuildingType
+var building_data: BuildingData = BuildingData.new()
 
-# TODO: Get rid of ASAP
-func _get_footprint_size() -> Vector2i:
-	var building_scene: PackedScene = load(Globals.BuildingScenes.get(buildling_type))
-	var building: Building = building_scene.instantiate()
-	return building.footprint_size
-
-func _ready() -> void:
-	set_valid(true)
+var buildling_type: Types.BuildingType :
+	get:
+		return building_data.building_type
+	set(value):
+		building_data = Paths.get_building_data(value)
 
 var top_left: Vector2i :
 	get:
@@ -20,11 +16,12 @@ var top_left: Vector2i :
 
 var center: Vector2i :
 	get:
-		var footprint_size: Vector2i = _get_footprint_size()
-		return top_left + footprint_size / 2
+		return top_left + building_data.footprint_size / 2
 	set(value):
-		var footprint_size: Vector2i = _get_footprint_size()
-		top_left = value - (footprint_size / 2 - (Vector2i.ONE - footprint_size % 2))
+		top_left = value - (building_data.footprint_size / 2 - (Vector2i.ONE - building_data.footprint_size % 2))
+
+func _ready() -> void:
+	set_valid(true)
 
 func set_valid(valid: bool):
 	if valid:

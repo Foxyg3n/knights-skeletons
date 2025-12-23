@@ -25,6 +25,9 @@ func handle_input(event: InputEventKey) -> void:
         else:
             recall_group(group)
 
+func clear_groups():
+    groups.clear()
+
 func _key_to_group(keycode: Key) -> int:
     match keycode:
         KEY_1: return 1

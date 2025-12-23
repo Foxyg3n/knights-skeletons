@@ -17,13 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://core/globals.gd"
+Types="*res://core/types.gd"
 GameManager="*res://core/game_manager.gd"
 SelectionManager="*res://systems/selection/selection_manager.gd"
 InputMode="*res://systems/input/input_mode.gd"
 CommandDispatcher="*res://systems/command/command_dispatcher.gd"
 Debug="*res://systems/debug/debug.tscn"
 ControlGroupSystem="*res://systems/control_group/control_group_system.gd"
+Paths="*res://core/paths.gd"
 
 [display]
 
@@ -39,13 +40,14 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://assets/": "pink",
 "res://components/": "yellow",
 "res://core/": "red",
+"res://data/": "green",
 "res://entities/": "purple",
 "res://systems/": "orange",
 "res://ui/": "blue",
-"res://utils/": "teal"
+"res://utils/": "teal",
+"res://world/": "pink"
 }
 
 [gui]

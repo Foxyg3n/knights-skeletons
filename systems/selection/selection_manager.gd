@@ -26,6 +26,9 @@ func set_selection(selection: Array[Selectable]):
 
 	on_selection_change.emit()
 
+func clear_selection_silently():
+	selected_objects.clear()
+
 # TODO: implement
 func _filter_selection(selection: Array[Selectable]) -> Array[Selectable]:
 	return selection
