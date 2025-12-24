@@ -13,7 +13,6 @@ var move_target: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	add_to_group("unit")
-	selectable.right_click_action.connect(move_to)
 
 func _physics_process(delta) -> void:
 	if navigation.is_navigation_finished():

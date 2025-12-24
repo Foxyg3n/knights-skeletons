@@ -29,7 +29,7 @@ func enter_build_mode(type: Types.BuildingType) -> void:
 
 
 func clear_mode():
-	# Building Mode
+	# Clean building mode
 	building_type = Types.BuildingType.NONE
 	if ghost_building:
 		ghost_building.queue_free()
@@ -56,7 +56,6 @@ func handle_world_motion(world_pos: Vector2) -> void:
 		return
 
 	var tile: Vector2i = Map.instance.world_to_tile(world_pos)
-#	var tile_world_pos: Vector2 = Map.instance.tile_to_world(tile)
 	ghost_building.center = tile
 
 	var can_place: bool = Map.instance.can_place(building_type, tile, true)
@@ -73,22 +72,20 @@ func handle_key_press(event: InputEventKey):
 					clear_mode()
 
 func _handle_default_right_click(world_position: Vector2) -> void:
-	var selected_units: Array[Unit] = SelectionManager.get_selection_as_units()
+	if SelectionManager.is_selection_units():
+		var selected_units: Array[Unit] = SelectionManager.get_selection_as_units()
 
-	if selected_units.is_empty():
-		return
+		var command: Command
+	#    var clicked_unit = World.get_unit_at_position(world_position)
+		if false: #clicked_unit and clicked_unit.is_enemy():
+			pass
+			# Attack command
+	#        var cmd = AttackCommand.new(selected_units, clicked_unit.global_position)
+		else:
+			# Move command
+			command = MoveCommand.new(selected_units, world_position)
 
-	var command: Command
-#    var clicked_unit = World.get_unit_at_position(world_position)
-	if false: #clicked_unit and clicked_unit.is_enemy():
-		pass
-		# Attack command
-#        var cmd = AttackCommand.new(selected_units, clicked_unit.global_position)
-	else:
-		# Move command
-		command = MoveCommand.new(selected_units, world_position)
-
-	CommandDispatcher.enqueue_command(command)
+		CommandDispatcher.enqueue_command(command)
 
 func _handle_build_click(mouse_pos: Vector2):
 	var building: Building = Map.instance.try_place_building_world(building_type, mouse_pos)
