@@ -1,17 +1,35 @@
-[gd_scene load_steps=19 format=4 uid="uid://dkmj50kp2moo5"]
+[gd_scene load_steps=23 format=4 uid="uid://dkmj50kp2moo5"]
 
 [ext_resource type="Script" uid="uid://drmlkq3xbqq18" path="res://world/game.gd" id="1_3eyib"]
 [ext_resource type="Script" uid="uid://0np5t5fgb30d" path="res://systems/input/world_input.gd" id="1_g4kob"]
 [ext_resource type="Texture2D" uid="uid://xenybl5cp8k2" path="res://assets/sprites/building_tileset.png" id="1_ibkli"]
 [ext_resource type="PackedScene" uid="uid://cbphrleqypmcp" path="res://ui/hud/action_hud.tscn" id="1_s0nni"]
+[ext_resource type="PackedScene" uid="uid://bolu4pb8g0gq8" path="res://systems/economy/economy.tscn" id="2_7v5ru"]
 [ext_resource type="Texture2D" uid="uid://u8ht0ueeq46k" path="res://assets/sprites/ground_tileset.png" id="2_cpr0p"]
 [ext_resource type="Script" uid="uid://bf56n534hv8vp" path="res://world/game_camera.gd" id="2_qbsmt"]
 [ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="3_78awf"]
+[ext_resource type="Script" uid="uid://cfogsqp1np2y3" path="res://utils/time_unit.gd" id="3_yb61d"]
 [ext_resource type="Script" uid="uid://ya5mgj06u6mq" path="res://world/map.gd" id="4_3eyib"]
 [ext_resource type="PackedScene" uid="uid://dsuo4g3bb2e1e" path="res://ui/hud/pause_menu.tscn" id="5_wddnx"]
 [ext_resource type="PackedScene" uid="uid://buk3nhx1hl737" path="res://entities/units/raindeer/raindeer.tscn" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://bpx33j7pjxwka" path="res://entities/units/peasant/peasant.tscn" id="8_400sg"]
 [ext_resource type="Script" uid="uid://dp6bivxqijvwd" path="res://systems/selection/selector.gd" id="9_g4kob"]
+
+[sub_resource type="Resource" id="Resource_yb61d"]
+script = ExtResource("3_yb61d")
+milliseconds = 5000
+seconds = 5.0
+minutes = 0.08333333333333333
+hours = 0.0013888888888888887
+metadata/_custom_type_script = "uid://cfogsqp1np2y3"
+
+[sub_resource type="Resource" id="Resource_1dcnx"]
+script = ExtResource("3_yb61d")
+milliseconds = 10000
+seconds = 10.0
+minutes = 0.16666666666666666
+hours = 0.0027777777777777775
+metadata/_custom_type_script = "uid://cfogsqp1np2y3"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4kob"]
 size = Vector2(0, 0)
@@ -54,6 +72,10 @@ agent_radius = 0.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_3eyib")
+
+[node name="Economy" parent="." instance=ExtResource("2_7v5ru")]
+gold_income_interval = SubResource("Resource_yb61d")
+wood_income_interval = SubResource("Resource_1dcnx")
 
 [node name="WorldInput" type="Node2D" parent="."]
 script = ExtResource("1_g4kob")

@@ -12,6 +12,10 @@ func _ready() -> void:
 	# TODO: Move to appropriate place
 	try_place_building(Types.BuildingType.KEEP, Vector2i.ZERO, true)
 
+func can_build(building_type: Types.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> bool:
+	var building_data: BuildingData = Paths.get_building_data(building_type)
+	return grid.can_place(building_type, tile, is_tile_center) and (not building_data.cost or Economy.instance.can_apply_cost(building_data.cost))
+
 func try_place_building(building_type: Types.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> Building:
 	if not grid.can_place(building_type, tile, is_tile_center):
 		return null
@@ -24,10 +28,18 @@ func try_place_building_world(building_type: Types.BuildingType, world_pos: Vect
 	if not grid.can_place(building_type, tile, true):
 		return null
 
+	var building_data: BuildingData = Paths.get_building_data(building_type)
+	if building_data.cost and not Economy.instance.can_apply_cost(building_data.cost):
+		return null
+
 	return _place_building(building_type, tile, true)
 
-func can_place(building_type: Types.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> bool:
-	return grid.can_place(building_type, tile, is_tile_center)
+#func try_destroy_building(building: Building) -> void:
+#	if not grid.is_building_present(building):
+#		return
+#
+#	grid.free_tiles(building)
+#	building.queue_free()
 
 func tile_to_world(tile: Vector2i) -> Vector2:
 	return grid.tile_to_world(tile)
@@ -41,6 +53,9 @@ func _place_building(building_type: Types.BuildingType, tile: Vector2i, is_tile_
 		building.center = tile
 	else:
 		building.top_left = tile
+
+	if building.cost:
+		Economy.instance.apply_cost(building.cost)
 
 	grid.reserve_tiles(building, tile, is_tile_center)
 	return building

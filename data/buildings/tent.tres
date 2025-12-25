@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=7 format=3 uid="uid://bus8la5syk0h3"]
+
+[ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_golsq"]
+[ext_resource type="Script" uid="uid://chx2eo10vuaiw" path="res://systems/economy/cost.gd" id="1_jhxqr"]
+[ext_resource type="Script" uid="uid://cxw6g01v61cad" path="res://systems/economy/income.gd" id="2_tfsah"]
+[ext_resource type="Texture2D" uid="uid://vorc8v0ryppq" path="res://entities/buildings/tent/tent.png" id="2_v6kfi"]
+
+[sub_resource type="Resource" id="Resource_kt3v3"]
+script = ExtResource("1_jhxqr")
+expendable = Dictionary[int, int]({
+0: 30,
+4: 4
+})
+metadata/_custom_type_script = "uid://chx2eo10vuaiw"
+
+[sub_resource type="Resource" id="Resource_3tutr"]
+script = ExtResource("2_tfsah")
+amount = 8
+metadata/_custom_type_script = "uid://cxw6g01v61cad"
+
+[resource]
+script = ExtResource("1_golsq")
+building_name = "Tent"
+footprint_size = Vector2i(2, 2)
+building_type = 2
+texture = ExtResource("2_v6kfi")
+cost = SubResource("Resource_kt3v3")
+income = SubResource("Resource_3tutr")
+metadata/_custom_type_script = "uid://dks14ga6irdht"

@@ -25,6 +25,7 @@ func set_action_buttons(actions: Dictionary):
 		actions_buttons_container.add_child(action_button_scene.instantiate())
 
 # Override
+@warning_ignore("unused_parameter")
 func set_hud_selection(selection: Array):
 	pass
 

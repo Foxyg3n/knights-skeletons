@@ -22,7 +22,7 @@ func handle_selection_change() -> void:
 	if selection.all(func(selectable: Selectable): return selectable.get_parent() is Unit):
 		# Same type units:
 		# TODO: Check actual type instead of unit name
-		if ArrayUtils.trait_matches(selection, func(selectable: Selectable): selectable.get_parent().unit_name):
+		if ArrayUtils.trait_matches(selection, func(selectable: Selectable): return selectable.get_parent().unit_name):
 			change_action_panel(Types.ActionPanelType.UNIT, selection)
 		# Different type units:
 		else:

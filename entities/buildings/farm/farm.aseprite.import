@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bhc4pvnmer3wp"
+path="res://.godot/imported/farm.aseprite-f9e6f733e2e70d89ae07e4b43de86d96.res"
+
+[deps]
+
+source_file="res://entities/buildings/farm/farm.aseprite"
+dest_files=["res://.godot/imported/farm.aseprite-f9e6f733e2e70d89ae07e4b43de86d96.res"]
+
+[params]
+

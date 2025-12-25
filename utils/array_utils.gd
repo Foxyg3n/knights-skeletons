@@ -13,3 +13,9 @@ static func trait_matches(array: Array, get_trait: Callable) -> bool:
 
     var member_trait = get_trait.call(array.front())
     return array.all(func(member): return get_trait.call(member) == member_trait)
+
+static func sum(array: Array[Variant]) -> Variant:
+    var total: Variant = 0.0
+    for value in array:
+        total += value
+    return total

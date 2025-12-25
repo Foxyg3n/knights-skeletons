@@ -18,14 +18,20 @@ func enter_build_mode(type: Types.BuildingType) -> void:
 	building_type = type
 	current_mode = Mode.BUILD
 
+	var tile: Vector2i = Map.instance.world_to_tile(get_global_mouse_position())
+
 	if ghost_building:
 		ghost_building.buildling_type = building_type
 	else:
 		ghost_building = load("res://systems/ghost_building/ghost_building.tscn").instantiate()
 		ghost_building.buildling_type = building_type
-		var tile: Vector2i = Map.instance.world_to_tile(get_global_mouse_position())
+
 		ghost_building.center = tile
+
 		Map.instance.add_child(ghost_building)
+
+	var can_build: bool = Map.instance.can_build(building_type, tile, true)
+	ghost_building.set_valid(can_build)
 
 
 func clear_mode():
@@ -58,8 +64,8 @@ func handle_world_motion(world_pos: Vector2) -> void:
 	var tile: Vector2i = Map.instance.world_to_tile(world_pos)
 	ghost_building.center = tile
 
-	var can_place: bool = Map.instance.can_place(building_type, tile, true)
-	ghost_building.set_valid(can_place)
+	var can_build: bool = Map.instance.can_build(building_type, tile, true)
+	ghost_building.set_valid(can_build)
 
 func handle_key_press(event: InputEventKey):
 	if event.pressed and not event.echo:

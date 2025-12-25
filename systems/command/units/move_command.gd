@@ -10,7 +10,7 @@ func _init(selected_units: Array[Unit], position: Vector2):
 func execute() -> void:
     if units.is_empty(): return
 
-    # Calculate points
+    # TODO: Calculate points
 
     for unit in units:
         unit.move_to(target_position)

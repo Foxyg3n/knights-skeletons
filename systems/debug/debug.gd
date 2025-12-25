@@ -23,8 +23,8 @@ func add_label(label_name: String) -> Label:
     container.add_child(new_label)
     return new_label
 
-func is_label(name: String) -> bool:
-    return labels.has(name)
+func is_label(label_name: String) -> bool:
+    return labels.has(label_name)
 
 func get_label(label_name: String) -> Label:
     return labels[label_name]

@@ -26,6 +26,10 @@ Debug="*res://systems/debug/debug.tscn"
 ControlGroupSystem="*res://systems/control_group/control_group_system.gd"
 Paths="*res://core/paths.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=320

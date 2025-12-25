@@ -4,6 +4,8 @@ class_name Building extends StaticBody2D
 
 var building_name: String
 var footprint_size: Vector2i
+var cost: Cost
+var income: Income
 
 @export var selectable: Selectable
 
@@ -26,5 +28,20 @@ func _ready() -> void:
 
 	building_name = data.building_name
 	footprint_size = data.footprint_size
+	cost = data.cost
+	income = data.income
 
-	# add actions like destroy building
+	# FIXME: Should this even be here or in the Map when placing the building?
+	if income:
+		Economy.instance.register_income(income)
+
+	_set_actions()
+	# TODO: add default actions like destroy building
+
+func _exit_tree() -> void:
+	if income:
+		Economy.instance.unregister_income(income)
+
+# Override
+func _set_actions() -> void:
+	pass

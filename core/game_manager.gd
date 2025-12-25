@@ -16,21 +16,20 @@ func _ready():
 	load_scene.call_deferred(Scene.MainMenu)
 
 func _input(event: InputEvent) -> void:
-	pass
-#	if event is InputEventKey:
-#		if event.pressed and event.keycode == KEY_1:
-#			load_scene(Scene.MainMenu)
-#
-#		elif event.pressed and event.keycode == KEY_2:
-#			var tile_map: TileMapLayer  = get_tree().get_root().find_child("Ground", true, false)
-#			var tile_pos: Vector2i = tile_map.local_to_map(get_global_mouse_position())
-#			Debug.get_or_add_label("mouse_tile_position").text = str(tile_pos)
-#
-#		elif event.pressed and event.keycode == KEY_3:
-#			Map.instance.try_place_building_world(Types.BuildingType.KEEP, get_global_mouse_position())
-#
-#		elif event.pressed and event.keycode == KEY_4:
-#			InputMode.enter_build_mode(Types.BuildingType.KEEP)
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_F1:
+			load_scene(Scene.MainMenu)
+
+		elif event.pressed and event.keycode == KEY_F2:
+			var tile_map: TileMapLayer  = get_tree().get_root().find_child("Ground", true, false)
+			var tile_pos: Vector2i = tile_map.local_to_map(get_global_mouse_position())
+			Debug.get_or_add_label("mouse_tile_position").text = str(tile_pos)
+
+		elif event.pressed and event.keycode == KEY_F3:
+			Map.instance.try_place_building_world(Types.BuildingType.KEEP, get_global_mouse_position())
+
+		elif event.pressed and event.keycode == KEY_F4:
+			InputMode.enter_build_mode(Types.BuildingType.KEEP)
 
 func load_scene(scene_type: Scene, force: bool = false) -> void:
 	var is_same_scene: bool = current_scene != null and current_scene.name == Scene.keys()[scene_type]

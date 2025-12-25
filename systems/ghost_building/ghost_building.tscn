@@ -6,8 +6,9 @@
 _data = PackedByteArray("AAADAAUAAAABAAAAKAAAACgAAABoAQAAUklGRmABAABXRUJQVlA4TFMBAAAvJ8AJEF+gOJKk5BR7uvMn//jIQ1EjScoY2B/TkX8tp0lx27aRX1nhTnr/u/9YHaAQEBT5P1oAAIADHQiI6+Fms4jhX5P4/+6meu8CHG172zbipBWcXHiL1BPUPZq8pld3X0EZe/LDk0dIk3vB6VTtMWNE/xW2bdtIGd39w9vJpq20yqm0rE86doNSx04NNQJnKy1bXB8H85Qbp2OnxfXx9cKQLmLdxFpc3zyqIYaABcV1BgwJM8rlyNB6KMJSss7rYQa2mNJ8r9ktvtf85qje8kqlUd37X0G6dhmD1IzxUA01gm0E85SbHLZVsTmuF4Z04WylZdWNNftg/KiGANGxU403qmOnDBgSFt3ECmFkH3AEQwCDBfdh+AMWAGIIEQC8hRdf4R8ACBtC3p/L03vkNSTMwiI/VwnCIojENN8L5eqkUGp+83hvz6bu7RU/aPveLnoA")
 size_override = Vector2(40, 40)
 
-[node name="GhostBuilding" type="Node2D"]
+[node name="GhostBuilding" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_ucogw")
+sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

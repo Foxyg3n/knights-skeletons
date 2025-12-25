@@ -1,10 +1,19 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://qlxyt5c3xyyt"]
+[gd_resource type="Resource" script_class="BuildingData" load_steps=5 format=3 uid="uid://qlxyt5c3xyyt"]
 
+[ext_resource type="Script" uid="uid://cxw6g01v61cad" path="res://systems/economy/income.gd" id="1_8fkjw"]
 [ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_p2ufg"]
+[ext_resource type="Texture2D" uid="uid://cvstafclv7lg3" path="res://entities/buildings/keep/keep.png" id="2_3vr2e"]
+
+[sub_resource type="Resource" id="Resource_5ags7"]
+script = ExtResource("1_8fkjw")
+amount = 100
+metadata/_custom_type_script = "uid://cxw6g01v61cad"
 
 [resource]
 script = ExtResource("1_p2ufg")
 building_name = "Keep"
 footprint_size = Vector2i(5, 5)
 building_type = 1
+texture = ExtResource("2_3vr2e")
+income = SubResource("Resource_5ags7")
 metadata/_custom_type_script = "uid://dks14ga6irdht"

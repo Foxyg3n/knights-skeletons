@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyt15cvnfoyjm"]
+
+[ext_resource type="Script" uid="uid://b3p7wbjg25w5t" path="res://entities/buildings/tent/tent.gd" id="1_0qdln"]
+[ext_resource type="Resource" uid="uid://bus8la5syk0h3" path="res://data/buildings/tent.tres" id="2_ew21i"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="2_tvoas"]
+[ext_resource type="PackedScene" uid="uid://c1ujmtmnumfys" path="res://components/selection/visuals/building_selection_visual.tscn" id="3_j2k44"]
+[ext_resource type="Texture2D" uid="uid://vorc8v0ryppq" path="res://entities/buildings/tent/tent.png" id="3_u1o3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qdln"]
+size = Vector2(12, 7)
+
+[node name="Tent" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
+script = ExtResource("1_0qdln")
+data = ExtResource("2_ew21i")
+selectable = NodePath("Selectable")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8.5)
+shape = SubResource("RectangleShape2D_0qdln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, 8)
+texture = ExtResource("3_u1o3f")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "tent",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://entities/buildings/tent/tent.aseprite",
+"source_uid": 249787901572252120
+}
+metadata/_aseprite_wizard_source_file_hash_ = "896f2c5cb9243f4f4e4e139351fc5564"
+
+[node name="Selectable" parent="." instance=ExtResource("2_tvoas")]
+
+[node name="BuildingSelectionVisual" parent="." node_paths=PackedStringArray("selectable", "building") instance=ExtResource("3_j2k44")]
+selectable = NodePath("../Selectable")
+building = NodePath("..")
