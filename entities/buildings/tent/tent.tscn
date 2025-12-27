@@ -46,7 +46,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://entities/buildings/tent/tent.aseprite",
 "source_uid": 249787901572252120
 }
-metadata/_aseprite_wizard_source_file_hash_ = "896f2c5cb9243f4f4e4e139351fc5564"
+metadata/_aseprite_wizard_source_file_hash_ = "8029d219641956fcc519df4f5bb9dada"
 
 [node name="Selectable" parent="." instance=ExtResource("2_tvoas")]
 

@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="Farm" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
@@ -55,7 +55,7 @@ shape = SubResource("RectangleShape2D_sg5e7")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uk3pi")
-frame_progress = 0.24871585
+frame_progress = 0.40502757
 centered = false
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
