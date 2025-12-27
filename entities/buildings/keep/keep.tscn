@@ -44,7 +44,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://entities/buildings/keep/keep.aseprite",
 "source_uid": 7560650406817207340
 }
-metadata/_aseprite_wizard_source_file_hash_ = "0058ec27d2a7f4c3a56cd6cf6c6f65c3"
+metadata/_aseprite_wizard_source_file_hash_ = "ae04bda3071f58dc170a8eee38908957"
 
 [node name="Selectable" parent="." instance=ExtResource("1_kwrws")]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0if3yq0hj4sd"]
+[gd_scene load_steps=11 format=3 uid="uid://b0if3yq0hj4sd"]
 
 [ext_resource type="Script" uid="uid://lrbsgvj5b60f" path="res://entities/buildings/farm/farm.gd" id="1_sg5e7"]
 [ext_resource type="Texture2D" uid="uid://clwinut7arfp4" path="res://entities/buildings/farm/farm.png" id="2_851nx"]
@@ -8,6 +8,42 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sg5e7"]
 size = Vector2(14, 14)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_08fvy"]
+atlas = ExtResource("2_851nx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6oon"]
+atlas = ExtResource("2_851nx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_356p7"]
+atlas = ExtResource("2_851nx")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aw48"]
+atlas = ExtResource("2_851nx")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uk3pi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08fvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6oon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_356p7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aw48")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Farm" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
 script = ExtResource("1_sg5e7")
 selectable = NodePath("Selectable")
@@ -16,33 +52,29 @@ selectable = NodePath("Selectable")
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_sg5e7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_851nx")
+sprite_frames = SubResource("SpriteFrames_uk3pi")
+frame_progress = 0.24871585
 centered = false
 metadata/_aseprite_wizard_interface_config_ = {
 "output_section": true,
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
-"convert_fps_field": 60.0,
-"convert_ms_field": 16.0,
-"convert_to_fps": false,
 "embed_tex": false,
-"i_mode": 1,
-"keep_anim_length": false,
 "layers": [],
 "o_ex_p": "",
 "o_folder": "",
 "o_name": "farm",
 "only_visible": false,
-"player": "",
 "scale": "1.0",
+"should_round_fps": true,
 "slice": "",
 "source": "res://entities/buildings/farm/farm.aseprite",
 "source_uid": 2883660047990330355
 }
-metadata/_aseprite_wizard_source_file_hash_ = "30248b917af19e69100a3f25cc079e27"
+metadata/_aseprite_wizard_source_file_hash_ = "78fb520ecf1f3218fab3fba9c308dd5d"
 
 [node name="Selectable" parent="." instance=ExtResource("3_08fvy")]
 
