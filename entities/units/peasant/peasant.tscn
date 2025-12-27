@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpx33j7pjxwka"]
 
 [ext_resource type="Script" uid="uid://cclcnpj1gj8my" path="res://entities/units/peasant/peasant.gd" id="1_nt47t"]
-[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="2_hii6q"]
+[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://systems/control_group/unit_tileset.png" id="2_hii6q"]
 [ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_jc5ts"]
 [ext_resource type="PackedScene" uid="uid://bhoeovfy24htm" path="res://components/selection/visuals/unit_selection_visual.tscn" id="4_e1dms"]
 

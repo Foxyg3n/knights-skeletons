@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://buk3nhx1hl737"]
 
 [ext_resource type="Script" uid="uid://bmx81p2ioo5fc" path="res://entities/units/raindeer/raindeer.gd" id="1_fsl4s"]
-[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://assets/sprites/unit_tileset.png" id="2_0e3ww"]
+[ext_resource type="Texture2D" uid="uid://drmmp1i2vvlva" path="res://systems/control_group/unit_tileset.png" id="2_0e3ww"]
 [ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_48mib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e3ww"]
