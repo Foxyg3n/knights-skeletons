@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 	Debug.get_or_add_label("food").text = "Food: %d" % food.available()
 
 func can_apply_cost(cost: Cost) -> bool:
-	for resource_type in cost.expendable.keys() + cost.sustenance.keys():
+	for resource_type in cost.resources:
 		var amount: int = cost.get_resource_amount(resource_type)
 		var resource: GameResource = _get_resource_by_type(resource_type)
 		if resource.available() < amount:
@@ -51,7 +51,7 @@ func get_available(resource_type: Types.ResourceType) -> int:
 	return _get_resource_by_type(resource_type).available()
 
 func apply_cost(cost: Cost) -> void:
-	for resource_type in cost.expendable.keys() + cost.sustenance.keys():
+	for resource_type in cost.resources:
 		var amount: int = cost.get_resource_amount(resource_type)
 		var resource: GameResource = _get_resource_by_type(resource_type)
 		if resource.is_expendable:
@@ -60,7 +60,7 @@ func apply_cost(cost: Cost) -> void:
 			resource.used += amount
 
 func release_cost(cost: Cost) -> void:
-	for resource_type in cost.expendable.keys() + cost.sustenance.keys():
+	for resource_type in cost.resources:
 		var amount: int = cost.get_resource_amount(resource_type)
 		var resource: GameResource = _get_resource_by_type(resource_type)
 		if resource.is_expendable:

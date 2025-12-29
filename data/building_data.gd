@@ -6,3 +6,4 @@ class_name BuildingData extends Resource
 @export var texture: Texture2D
 @export var cost: Cost
 @export var income: Income
+@export var claim_area: ClaimAreaData

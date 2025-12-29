@@ -93,6 +93,7 @@ func _handle_default_right_click(world_position: Vector2) -> void:
 
 		CommandDispatcher.enqueue_command(command)
 
+# TODO: Think of a ghost building placement (no building, just tile highlight or building ghost on top)
 func _handle_build_click(mouse_pos: Vector2):
 	var building: Building = Map.instance.try_place_building_world(building_type, mouse_pos)
 	if building:

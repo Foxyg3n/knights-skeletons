@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=6 format=3 uid="uid://cisqqum7pqprr"]
+
+[ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_7v8ir"]
+[ext_resource type="Script" uid="uid://chx2eo10vuaiw" path="res://systems/economy/cost.gd" id="1_tpqgv"]
+[ext_resource type="Script" uid="uid://cxw6g01v61cad" path="res://systems/economy/income.gd" id="2_p138f"]
+
+[sub_resource type="Resource" id="Resource_7ax35"]
+script = ExtResource("1_tpqgv")
+metadata/_custom_type_script = "uid://chx2eo10vuaiw"
+
+[sub_resource type="Resource" id="Resource_ueyjj"]
+script = ExtResource("2_p138f")
+metadata/_custom_type_script = "uid://cxw6g01v61cad"
+
+[resource]
+script = ExtResource("1_7v8ir")
+building_name = "Sawmill"
+footprint_size = Vector2i(2, 2)
+cost = SubResource("Resource_7ax35")
+income = SubResource("Resource_ueyjj")
+metadata/_custom_type_script = "uid://dks14ga6irdht"

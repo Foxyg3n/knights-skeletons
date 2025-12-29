@@ -31,17 +31,17 @@ func _ready() -> void:
 	cost = data.cost
 	income = data.income
 
-	# FIXME: Should this even be here or in the Map when placing the building?
-	if income:
-		Economy.instance.register_income(income)
-
 	_set_actions()
 	# TODO: add default actions like destroy building
-
-func _exit_tree() -> void:
-	if income:
-		Economy.instance.unregister_income(income)
 
 # Override
 func _set_actions() -> void:
 	pass
+
+func _on_place() -> void:
+	if income:
+		Economy.instance.register_income(income)
+
+func _on_destroy() -> void:
+	if income:
+		Economy.instance.unregister_income(income)

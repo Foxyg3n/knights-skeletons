@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=5 format=3 uid="uid://cyxffpvomwtbs"]
+[gd_resource type="Resource" script_class="BuildingData" load_steps=6 format=3 uid="uid://cyxffpvomwtbs"]
 
+[ext_resource type="Resource" uid="uid://b2plecukfvm4r" path="res://data/buildings/farm_claim_area.tres" id="1_iyd7s"]
 [ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_tbikg"]
 [ext_resource type="Script" uid="uid://chx2eo10vuaiw" path="res://systems/economy/cost.gd" id="1_tigsq"]
 [ext_resource type="Texture2D" uid="uid://clwinut7arfp4" path="res://entities/buildings/farm/farm.png" id="3_iyd7s"]
 
 [sub_resource type="Resource" id="Resource_njn5k"]
 script = ExtResource("1_tigsq")
-expendable = Dictionary[int, int]({
-0: 300,
-1: 30
+resources = Dictionary[int, int]({
+0: 50
 })
 metadata/_custom_type_script = "uid://chx2eo10vuaiw"
 
@@ -19,4 +19,5 @@ footprint_size = Vector2i(2, 2)
 building_type = 2
 texture = ExtResource("3_iyd7s")
 cost = SubResource("Resource_njn5k")
+claim_area = ExtResource("1_iyd7s")
 metadata/_custom_type_script = "uid://dks14ga6irdht"

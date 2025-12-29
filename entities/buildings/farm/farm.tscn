@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0if3yq0hj4sd"]
+[gd_scene load_steps=12 format=3 uid="uid://b0if3yq0hj4sd"]
 
 [ext_resource type="Script" uid="uid://lrbsgvj5b60f" path="res://entities/buildings/farm/farm.gd" id="1_sg5e7"]
 [ext_resource type="Texture2D" uid="uid://clwinut7arfp4" path="res://entities/buildings/farm/farm.png" id="2_851nx"]
+[ext_resource type="Resource" uid="uid://cyxffpvomwtbs" path="res://data/buildings/farm.tres" id="2_k6oon"]
 [ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_08fvy"]
 [ext_resource type="PackedScene" uid="uid://c1ujmtmnumfys" path="res://components/selection/visuals/building_selection_visual.tscn" id="4_k6oon"]
 
@@ -46,6 +47,7 @@ animations = [{
 
 [node name="Farm" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
 script = ExtResource("1_sg5e7")
+data = ExtResource("2_k6oon")
 selectable = NodePath("Selectable")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="InfluencePlacementData" load_steps=2 format=3 uid="uid://cd3f8qwu4pmn5"]
+
+[ext_resource type="Script" uid="uid://btnq2r71s6t5a" path="res://data/claim_area_data.gd" id="1_xbry6"]
+
+[resource]
+script = ExtResource("1_xbry6")
+metadata/_custom_type_script = "uid://btnq2r71s6t5a"

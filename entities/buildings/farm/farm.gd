@@ -1,1 +1,1 @@
-extends Building
+extends ClaimingBuilding

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dkmj50kp2moo5"]
+[gd_scene load_steps=22 format=4 uid="uid://dkmj50kp2moo5"]
 
 [ext_resource type="Script" uid="uid://drmlkq3xbqq18" path="res://world/game.gd" id="1_3eyib"]
 [ext_resource type="Script" uid="uid://0np5t5fgb30d" path="res://systems/input/world_input.gd" id="1_g4kob"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://cfogsqp1np2y3" path="res://utils/time_unit.gd" id="3_yb61d"]
 [ext_resource type="Script" uid="uid://ya5mgj06u6mq" path="res://world/map.gd" id="4_3eyib"]
 [ext_resource type="PackedScene" uid="uid://dsuo4g3bb2e1e" path="res://ui/hud/pause_menu.tscn" id="5_wddnx"]
-[ext_resource type="PackedScene" uid="uid://buk3nhx1hl737" path="res://entities/units/raindeer/raindeer.tscn" id="6_aug50"]
 [ext_resource type="PackedScene" uid="uid://bpx33j7pjxwka" path="res://entities/units/peasant/peasant.tscn" id="8_400sg"]
 [ext_resource type="Texture2D" uid="uid://btp1wkl3pvaek" path="res://world/Dirt.png" id="9_7v5ru"]
 [ext_resource type="Script" uid="uid://dp6bivxqijvwd" path="res://systems/selection/selector.gd" id="9_g4kob"]
@@ -17,18 +16,18 @@
 
 [sub_resource type="Resource" id="Resource_yb61d"]
 script = ExtResource("3_yb61d")
-milliseconds = 4996
-seconds = 4.996
-minutes = 0.08326666666666667
-hours = 0.001387777777777778
+milliseconds = 4995
+seconds = 4.995
+minutes = 0.08325
+hours = 0.0013875
 metadata/_custom_type_script = "uid://cfogsqp1np2y3"
 
 [sub_resource type="Resource" id="Resource_1dcnx"]
 script = ExtResource("3_yb61d")
-milliseconds = 9996
-seconds = 9.996
-minutes = 0.1666
-hours = 0.0027766666666666664
+milliseconds = 9990
+seconds = 9.99
+minutes = 0.1665
+hours = 0.002775
 metadata/_custom_type_script = "uid://cfogsqp1np2y3"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4kob"]
@@ -625,9 +624,11 @@ shape = SubResource("RectangleShape2D_g4kob")
 [node name="PauseMenu" parent="UI" instance=ExtResource("5_wddnx")]
 visible = false
 
-[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("ground_layer")]
+[node name="Map" type="Node2D" parent="." node_paths=PackedStringArray("ground_layer", "grass_layer", "tree_layer")]
 script = ExtResource("4_3eyib")
 ground_layer = NodePath("Ground")
+grass_layer = NodePath("Grass")
+tree_layer = NodePath("Trees")
 
 [node name="Trees" type="TileMapLayer" parent="Map"]
 texture_filter = 1
@@ -653,9 +654,6 @@ navigation_polygon = SubResource("NavigationPolygon_400sg")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_qbsmt")
 speed = 200.0
-
-[node name="Raindeer" parent="." instance=ExtResource("6_aug50")]
-position = Vector2(-22, 11)
 
 [node name="Peasant" parent="." instance=ExtResource("8_400sg")]
 position = Vector2(36, 34)
