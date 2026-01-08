@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dvkda21cohsxi"
+path="res://.godot/imported/projectile.aseprite-80deafd6ad7a3a10fc4bc0d787e7d2f4.res"
+
+[deps]
+
+source_file="res://entities/projectiles/projectile.aseprite"
+dest_files=["res://.godot/imported/projectile.aseprite-80deafd6ad7a3a10fc4bc0d787e7d2f4.res"]
+
+[params]
+

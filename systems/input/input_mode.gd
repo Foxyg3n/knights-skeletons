@@ -82,11 +82,11 @@ func _handle_default_right_click(world_position: Vector2) -> void:
 		var selected_units: Array[Unit] = SelectionManager.get_selection_as_units()
 
 		var command: Command
-	#    var clicked_unit = World.get_unit_at_position(world_position)
-		if false: #clicked_unit and clicked_unit.is_enemy():
-			pass
+		# FIXME: Create util for collision queries
+		var clicked_enemy: Targetable = _get_targetable_at_position(world_position)
+		if clicked_enemy:
 			# Attack command
-	#        var cmd = AttackCommand.new(selected_units, clicked_unit.global_position)
+			command = AttackCommand.new(selected_units, clicked_enemy)
 		else:
 			# Move command
 			command = MoveCommand.new(selected_units, world_position)
@@ -98,3 +98,18 @@ func _handle_build_click(mouse_pos: Vector2):
 	var building: Building = Map.instance.try_place_building_world(building_type, mouse_pos)
 	if building:
 		clear_mode()
+
+func _get_targetable_at_position(world_position: Vector2) -> Targetable:
+	var space: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	var query: PhysicsPointQueryParameters2D = PhysicsPointQueryParameters2D.new()
+	query.position = world_position
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	var results: Array[Dictionary] = space.intersect_point(query)
+
+	for result in results:
+		var object: Node2D = result.get("collider").get_parent().get_node("Targetable")
+		if object and object is Targetable:
+			return object as Targetable
+
+	return null

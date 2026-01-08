@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c072pfk4if3xj"]
+
+[ext_resource type="Script" uid="uid://cwd6a72cvvxc3" path="res://components/interaction_area/interaction_area.gd" id="1_671el"]
+
+[node name="InteractionArea" type="Area2D"]
+script = ExtResource("1_671el")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.9372549, 0.16862746, 0.48235294, 0.41960785)

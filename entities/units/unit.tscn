@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://1c38qq4kh5px"]
+
+[ext_resource type="Script" uid="uid://b1tqglt4a1int" path="res://entities/units/unit.gd" id="1_3y8hq"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="1_5dtfy"]
+[ext_resource type="PackedScene" uid="uid://bhoeovfy24htm" path="res://components/selection/visuals/unit_selection_visual.tscn" id="2_3y8hq"]
+[ext_resource type="PackedScene" uid="uid://oef34h4xyw2w" path="res://components/targetable/targetable.tscn" id="3_bfyms"]
+[ext_resource type="PackedScene" uid="uid://c072pfk4if3xj" path="res://components/interaction_area/interaction_area.tscn" id="4_cdyxs"]
+
+[node name="Unit" type="CharacterBody2D" node_paths=PackedStringArray("selectable", "navigation")]
+script = ExtResource("1_3y8hq")
+speed = null
+acceleration = null
+unit_name = null
+selectable = NodePath("Selectable")
+navigation = NodePath("NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Selectable" parent="." instance=ExtResource("1_5dtfy")]
+
+[node name="Targetable" parent="." instance=ExtResource("3_bfyms")]
+
+[node name="UnitSelectionVisual" parent="." node_paths=PackedStringArray("selectable") instance=ExtResource("2_3y8hq")]
+selectable = NodePath("../Selectable")
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_cdyxs")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionArea"]
+debug_color = Color(0.9358114, 0.1678164, 0.48423213, 0.41960785)

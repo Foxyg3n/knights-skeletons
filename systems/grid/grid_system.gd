@@ -1,10 +1,12 @@
 class_name GridSystem
 
 var tile_map: TileMapLayer
+var restricted_layers: Array[TileMapLayer] = []
 var building_grid: Dictionary = {}
 
-func _init(layer: TileMapLayer):
+func _init(layer: TileMapLayer, restricted_layers: Array[TileMapLayer] = []):
 	tile_map = layer
+	self.restricted_layers = restricted_layers
 
 func world_to_tile(world_pos: Vector2) -> Vector2i:
 	return tile_map.local_to_map(world_pos)
@@ -17,9 +19,10 @@ func tile_to_world(tile: Vector2i) -> Vector2:
 
 func can_place(building_type: Types.BuildingType, tile: Vector2i, is_tile_center: bool = false) -> bool:
 	var building_data: BuildingData = Paths.get_building_data(building_type)
-
 	var tiles: Array[Vector2i] = _get_footprint_tiles(building_data.footprint_size, tile, is_tile_center)
-	return not tiles.any(is_tile_reserved)
+
+	var can_place_on_restricted_layers: bool = restricted_layers.all(func(layer: TileMapLayer) -> bool: return _can_place_on_restricted_layer(layer, tiles))
+	return not tiles.any(is_tile_reserved) and can_place_on_restricted_layers
 
 func is_tile_reserved(tile: Vector2i) -> bool:
 	return building_grid.has(tile)
@@ -41,3 +44,9 @@ func _get_footprint_tiles(footprint: Vector2i, anchor_tile: Vector2i, is_anchor_
 			tiles.append(root_tile + Vector2i(x, y))
 
 	return tiles
+
+func _can_place_on_restricted_layer(tile_map_layer: TileMapLayer, tiles: Array[Vector2i]) -> bool:
+	for tile in tiles:
+		if tile_map_layer.get_cell_tile_data(tile):
+			return false
+	return true

@@ -15,10 +15,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		selection_start = Vector2.ZERO
 		var preselected_units: Array = preselected_selectables_cache.filter(func(selectable: Selectable): return selectable.get_parent() is Unit)
 		var preselected_buildings: Array = preselected_selectables_cache.filter(func(selectable: Selectable): return selectable.get_parent() is Building)
+		var preselected_enemies: Array = preselected_selectables_cache.filter(func(selectable: Selectable): return selectable.get_parent() is Enemy)
 		if not preselected_units.is_empty():
 			SelectionManager.set_selection(preselected_units)
 		elif not preselected_buildings.is_empty():
 			SelectionManager.set_selection(preselected_buildings)
+		elif not preselected_enemies.is_empty():
+			SelectionManager.set_selection(preselected_enemies)
 		else:
 			SelectionManager.set_selection([])
 
@@ -53,7 +56,10 @@ func _update_collision_box():
 	rect_collision.size = size
 
 func _preselect_units():
-	var area_selectables: Array = area.get_overlapping_bodies().filter(func(body): return body.selectable).map(func(body): return body.selectable)
+	var area_selectables: Array = area.get_overlapping_areas() \
+			.filter(func(body): return body is InteractionArea) \
+			.filter(func(body): return body.get_parent().get_node("Selectable")) \
+			.map(func(body): return body.get_parent().get_node("Selectable") as Selectable)
 
 	# New selectables
 	for selectable in ArrayUtils.difference(area_selectables, preselected_selectables_cache):

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dw7v7rqsd0362"
+path="res://.godot/imported/sawmill.aseprite-8549f9ae14bef159a2f02d51d1e064ee.res"
+
+[deps]
+
+source_file="res://entities/buildings/sawmill/sawmill.aseprite"
+dest_files=["res://.godot/imported/sawmill.aseprite-8549f9ae14bef159a2f02d51d1e064ee.res"]
+
+[params]
+

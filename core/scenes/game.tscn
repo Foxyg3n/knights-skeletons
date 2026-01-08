@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dkmj50kp2moo5"]
+[gd_scene load_steps=24 format=4 uid="uid://dkmj50kp2moo5"]
 
 [ext_resource type="Script" uid="uid://drmlkq3xbqq18" path="res://world/game.gd" id="1_3eyib"]
 [ext_resource type="Script" uid="uid://0np5t5fgb30d" path="res://systems/input/world_input.gd" id="1_g4kob"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://dp6bivxqijvwd" path="res://systems/selection/selector.gd" id="9_g4kob"]
 [ext_resource type="Texture2D" uid="uid://co2ji2f36gayp" path="res://world/Grass.png" id="9_wddnx"]
 [ext_resource type="Texture2D" uid="uid://cnnvym0gwo85p" path="res://world/Trees.png" id="11_yb61d"]
+[ext_resource type="PackedScene" uid="uid://c8jonb46w6rmv" path="res://entities/enemies/skeleton/skeleton.tscn" id="14_yb61d"]
+[ext_resource type="PackedScene" uid="uid://dib6u2oko7wdm" path="res://entities/units/archer/archer.tscn" id="15_1dcnx"]
 
 [sub_resource type="Resource" id="Resource_yb61d"]
 script = ExtResource("3_yb61d")
@@ -663,3 +665,15 @@ position = Vector2(23, 47)
 
 [node name="Peasant3" parent="." instance=ExtResource("8_400sg")]
 position = Vector2(45, 50)
+
+[node name="Skeleton" parent="." instance=ExtResource("14_yb61d")]
+position = Vector2(-59, 43)
+
+[node name="Archer" parent="." instance=ExtResource("15_1dcnx")]
+position = Vector2(-12, 56)
+
+[node name="Archer2" parent="." instance=ExtResource("15_1dcnx")]
+position = Vector2(-1, 66)
+
+[node name="Archer3" parent="." instance=ExtResource("15_1dcnx")]
+position = Vector2(-21, 67)

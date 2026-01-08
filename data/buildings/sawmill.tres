@@ -1,21 +1,33 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=6 format=3 uid="uid://cisqqum7pqprr"]
+[gd_resource type="Resource" script_class="BuildingData" load_steps=9 format=3 uid="uid://cisqqum7pqprr"]
 
 [ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_7v8ir"]
+[ext_resource type="Script" uid="uid://btnq2r71s6t5a" path="res://data/claim_area_data.gd" id="1_p138f"]
 [ext_resource type="Script" uid="uid://chx2eo10vuaiw" path="res://systems/economy/cost.gd" id="1_tpqgv"]
-[ext_resource type="Script" uid="uid://cxw6g01v61cad" path="res://systems/economy/income.gd" id="2_p138f"]
+[ext_resource type="Script" uid="uid://dtitq738bf33b" path="res://systems/economy/income.gd" id="2_p138f"]
+[ext_resource type="Texture2D" uid="uid://c0iiyjupfhym8" path="res://entities/buildings/sawmill/sawmill.png" id="4_p138f"]
+
+[sub_resource type="Resource" id="Resource_b6xyy"]
+script = ExtResource("2_p138f")
+type = 1
+amount = 1
+metadata/_custom_type_script = "uid://dtitq738bf33b"
+
+[sub_resource type="Resource" id="Resource_ueyjj"]
+script = ExtResource("1_p138f")
+radius = 2
+income_per_tile = SubResource("Resource_b6xyy")
+metadata/_custom_type_script = "uid://btnq2r71s6t5a"
 
 [sub_resource type="Resource" id="Resource_7ax35"]
 script = ExtResource("1_tpqgv")
 metadata/_custom_type_script = "uid://chx2eo10vuaiw"
 
-[sub_resource type="Resource" id="Resource_ueyjj"]
-script = ExtResource("2_p138f")
-metadata/_custom_type_script = "uid://cxw6g01v61cad"
-
 [resource]
 script = ExtResource("1_7v8ir")
 building_name = "Sawmill"
 footprint_size = Vector2i(2, 2)
+building_type = 4
+texture = ExtResource("4_p138f")
 cost = SubResource("Resource_7ax35")
-income = SubResource("Resource_ueyjj")
+claim_area = SubResource("Resource_ueyjj")
 metadata/_custom_type_script = "uid://dks14ga6irdht"

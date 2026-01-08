@@ -1,5 +1,4 @@
-extends UnitCommand
-class_name MoveCommand
+class_name MoveCommand extends UnitCommand
 
 var target_position: Vector2
 
@@ -13,4 +12,4 @@ func execute() -> void:
     # TODO: Calculate points
 
     for unit in units:
-        unit.move_to(target_position)
+        unit.set_order(MoveOrder.new(Types.OrderType.MOVE, target_position))

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmsa8klnn6273"]
+
+[ext_resource type="Script" uid="uid://dac0ebq1gk5tk" path="res://entities/buildings/sawmill/sawmill.gd" id="1_q3606"]
+[ext_resource type="Resource" uid="uid://cisqqum7pqprr" path="res://data/buildings/sawmill.tres" id="2_flawq"]
+[ext_resource type="Texture2D" uid="uid://c0iiyjupfhym8" path="res://entities/buildings/sawmill/sawmill.png" id="2_je2s2"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_411kj"]
+[ext_resource type="PackedScene" uid="uid://c1ujmtmnumfys" path="res://components/selection/visuals/building_selection_visual.tscn" id="4_flawq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je2s2"]
+size = Vector2(16, 16)
+
+[node name="Sawmill" type="StaticBody2D" node_paths=PackedStringArray("selectable")]
+script = ExtResource("1_q3606")
+data = ExtResource("2_flawq")
+selectable = NodePath("Selectable")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_je2s2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_je2s2")
+centered = false
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "sawmill",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://entities/buildings/sawmill/sawmill.aseprite",
+"source_uid": 8770809819935666657
+}
+metadata/_aseprite_wizard_source_file_hash_ = "6cf19e97e8dde2556a85b335d148ec58"
+
+[node name="Selectable" parent="." instance=ExtResource("3_411kj")]
+
+[node name="BuildingSelectionVisual" parent="." node_paths=PackedStringArray("selectable", "building") instance=ExtResource("4_flawq")]
+selectable = NodePath("../Selectable")
+building = NodePath("..")

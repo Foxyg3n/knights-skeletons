@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=4 uid="uid://c8jonb46w6rmv"]
+
+[ext_resource type="PackedScene" uid="uid://t8ky8cdbyvy5" path="res://entities/enemies/enemy.tscn" id="1_7jsv5"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_7jsv5"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAAA2AAAAUklGRi4AAABXRUJQVlA4TCIAAAAvB8ABEBcw//M///MfgAcFbdswuySCJhALP6L/4QfJh+B7")
+size_override = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jsv5"]
+size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q87sb"]
+size = Vector2(5, 8)
+
+[node name="Skeleton" instance=ExtResource("1_7jsv5")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+position = Vector2(0, -4)
+texture = SubResource("PortableCompressedTexture2D_7jsv5")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://entities/enemies/skeleton/skeleton.aseprite",
+"source_uid": 6589255809821869792
+}
+metadata/_aseprite_wizard_source_file_hash_ = "176f88559454c50c9180fec2236a83ea"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, -2.5)
+shape = SubResource("RectangleShape2D_7jsv5")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_q87sb")
+
+[node name="UnitSelectionVisual" parent="." index="3" node_paths=PackedStringArray("selectable")]
+selectable = NodePath("../Selectable")
+
+[editable path="InteractionArea"]

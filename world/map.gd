@@ -11,7 +11,7 @@ var claim_area_system: ClaimAreaSystem
 
 func _ready() -> void:
 	instance = self
-	grid = GridSystem.new(ground_layer)
+	grid = GridSystem.new(ground_layer, [ tree_layer ])
 	claim_area_system = ClaimAreaSystem.new()
 	# TODO: Move to appropriate place
 	try_place_building(Types.BuildingType.KEEP, Vector2i.ZERO, true)

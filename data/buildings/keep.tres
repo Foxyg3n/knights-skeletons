@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingData" load_steps=5 format=3 uid="uid://qlxyt5c3xyyt"]
 
-[ext_resource type="Script" uid="uid://cxw6g01v61cad" path="res://systems/economy/income.gd" id="1_8fkjw"]
+[ext_resource type="Script" uid="uid://dtitq738bf33b" path="res://systems/economy/income.gd" id="1_8fkjw"]
 [ext_resource type="Script" uid="uid://dks14ga6irdht" path="res://data/building_data.gd" id="1_p2ufg"]
 [ext_resource type="Texture2D" uid="uid://cvstafclv7lg3" path="res://entities/buildings/keep/keep.png" id="2_3vr2e"]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://ur3xklisyt2r"]
+
+[ext_resource type="PackedScene" uid="uid://c3dh3wwlijrpe" path="res://ui/panels/action/buttons/action_button.tscn" id="1_c06u4"]
+[ext_resource type="Texture2D" uid="uid://di4t1qtjk46d5" path="res://assets/sprites/ui/boxes/box_target_close.png" id="2_npoo7"]
+[ext_resource type="Script" uid="uid://2v2hsd61wq82" path="res://ui/panels/action/buttons/build/build_button.gd" id="3_k1vqr"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_c06u4"]
+device = -1
+keycode = 69
+unicode = 101
+
+[sub_resource type="Shortcut" id="Shortcut_npoo7"]
+events = [SubResource("InputEventKey_c06u4")]
+
+[node name="BuildSawmillButton" instance=ExtResource("1_c06u4")]
+shortcut = SubResource("Shortcut_npoo7")
+texture_normal = ExtResource("2_npoo7")
+script = ExtResource("3_k1vqr")
+building_type = 4

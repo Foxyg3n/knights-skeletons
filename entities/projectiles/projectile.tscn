@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=4 uid="uid://v6vguov7imja"]
+
+[ext_resource type="Script" uid="uid://b76n4kb400in4" path="res://entities/projectiles/projectile.gd" id="1_ek2yu"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_ek2yu"]
+_data = PackedByteArray("AAADAAUAAAABAAAACAAAAAgAAABKAAAAUklGRkIAAABXRUJQVlA4TDUAAAAvB8ABEB8gJCDcEP0f6YZAgPBixf8SAQnhlP/LZP4D8E9ZYKZtG589y7h0B2QgIvqfXnpLAQA=")
+size_override = Vector2(8, 8)
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_ek2yu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.25, -0.25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("PortableCompressedTexture2D_ek2yu")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://entities/projectiles/projectile.aseprite",
+"source_uid": 8654055154402125366
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d13c7aced580eee09f9a4926c95bdf69"

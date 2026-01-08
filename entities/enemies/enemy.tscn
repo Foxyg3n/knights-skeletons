@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://t8ky8cdbyvy5"]
+
+[ext_resource type="Script" uid="uid://dbmw2wkmctu1e" path="res://entities/enemies/enemy.gd" id="1_msovg"]
+[ext_resource type="PackedScene" uid="uid://c072pfk4if3xj" path="res://components/interaction_area/interaction_area.tscn" id="2_twyc1"]
+[ext_resource type="PackedScene" uid="uid://bhoeovfy24htm" path="res://components/selection/visuals/unit_selection_visual.tscn" id="3_twyc1"]
+[ext_resource type="PackedScene" uid="uid://cvjetcxbhval2" path="res://components/selection/selectable.tscn" id="3_w4yt1"]
+[ext_resource type="PackedScene" uid="uid://oef34h4xyw2w" path="res://components/targetable/targetable.tscn" id="4_ipr6v"]
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("selectable", "navigation")]
+script = ExtResource("1_msovg")
+selectable = NodePath("Selectable")
+navigation = NodePath("NavigationAgent2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://entities/enemies/skeleton/skeleton.aseprite",
+"source_uid": 6589255809821869792
+}
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_twyc1")]
+
+[node name="UnitSelectionVisual" parent="." instance=ExtResource("3_twyc1")]
+
+[node name="Selectable" parent="." instance=ExtResource("3_w4yt1")]
+
+[node name="Targetable" parent="." instance=ExtResource("4_ipr6v")]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

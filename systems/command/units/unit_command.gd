@@ -1,5 +1,4 @@
-extends Command
-class_name UnitCommand
+class_name UnitCommand extends Command
 
 var units: Array[Unit]
 

@@ -1,5 +1,4 @@
-extends UnitCommand
-class_name SingleUnitCommand
+class_name SingleUnitCommand extends UnitCommand
 
 func execute() -> void:
     for unit in units:
